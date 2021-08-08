@@ -12,12 +12,20 @@ class AttandanceController extends Controller
     public function laporan(){
         $laporan=[];
         $users = User::where('role','karyawan')->get();
-        foreach ($users as $u) {
-            foreach($u->attandances() as $a){
-                $laporan[]=$a;
-            }
-        }
-        dd($laporan);
+        // foreach ($users as $u) {
+        //    $kehadiran = Attandance::whereMonth('periode',date('m'))->where('user_id',$u->id)->get();
+        //    $cuti = Attandance::whereMonth('periode',date('m'))->where('user_id',$u->id)->where('ket','cuti')->get();
+        //    $sakit = Attandance::whereMonth('periode',date('m'))->where('user_id',$u->id)->where('ket','sakit')->get();
+        //    $laporan['karyawan'][]=$u->name;
+        //    $laporan['peforma']['periode'][]=date('m-Y');
+        //    $laporan['peforma']['presensi'][]=count($kehadiran);
+        //    $laporan['peforma']['absensi'][]=date('d')-count($kehadiran)+1;
+        //    $laporan['peforma']['cuti'][]=count($cuti);
+        //    $laporan['peforma']['sakit'][]=count($sakit);
+        //    $laporan['peforma']['tanpaKet'][]=date('d')-count($kehadiran)+1;
+        // }
+        // dd($laporan);
+        return view('aplikasi.laporan',compact('users'));
     }
     /**
      * Display a listing of the resource.

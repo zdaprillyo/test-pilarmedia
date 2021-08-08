@@ -62,7 +62,18 @@ class User extends Authenticatable
         }else{
             return true;
         }
-
+    }
+    public function getPresenCount(){
+        return count(Attandance::whereMonth('periode',date('m'))->where('user_id',$this->id)->where('ket','hadir')->get());
+    }
+    public function getAbsenCount(){
+        return $this->getCutiCount()+$this->getSakitCount();
+    }
+    public function getCutiCount(){
+        return count(Attandance::whereMonth('periode',date('m'))->where('user_id',$this->id)->where('ket','cuti')->get());
+    }
+    public function getSakitCount(){
+        return count(Attandance::whereMonth('periode',date('m'))->where('user_id',$this->id)->where('ket','sakit')->get());
     }
 
 
