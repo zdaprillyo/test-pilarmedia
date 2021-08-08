@@ -1,5 +1,6 @@
 <?php
 
+use App\Attandance;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::resource('presensi', 'AttandanceController');
+    Route::resource('absensi', 'AbsenceController');
+    Route::get('laporan','AttandanceController@laporan');
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);

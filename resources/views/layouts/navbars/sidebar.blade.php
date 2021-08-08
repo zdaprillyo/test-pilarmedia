@@ -17,6 +17,18 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'presensi' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('presensi.index') }}">
+          <i class="material-icons">content_paste</i>
+            <p>{{ __('Presensi') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'absensi' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('absensi.index') }}">
+          <i class="material-icons">content_paste</i>
+            <p>{{ __('Absensi') }}</p>
+        </a>
+      </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
